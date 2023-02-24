@@ -78,8 +78,9 @@ const getReviewersFromPr = async (prData) =>
   );
 
 // function calls
-const gh_prs = await getPullRequests();
-const dataArray = await getReviewersFromPr(gh_prs);
+const ghPrs = await getPullRequests();
+const dataArray = await getReviewersFromPr(ghPrs);
 
+// create csv file
 const csv = new ObjectsToCsv(dataArray);
 await csv.toDisk(`./${OUTPUT_FILE}.csv`);
